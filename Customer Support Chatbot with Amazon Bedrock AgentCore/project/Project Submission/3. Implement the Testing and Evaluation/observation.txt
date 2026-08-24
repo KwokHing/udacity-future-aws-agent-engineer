@@ -1,0 +1,11 @@
+The customer service agent was evaluated across three distinct routing paths: bug reports, platform questions, and other requests. The conversation logs were compiled and submitted to an AWS Bedrock Evaluation job using an LLM-as-a-judge configuration. 
+
+While the model achieved a correctness score close to 1, analysis of the evaluation dataset revealed a specific classification edge case.
+
+Key Findings:
+
+Routing Accuracy: The agent generally demonstrates high accuracy in classifying and routing diverse customer requests to their correct paths.
+
+Classification Misunderstanding: There are instances where the agent misinterprets platform questions as active bug reports.
+
+Root Cause & Solution: This misclassification typically occurs with troubleshooting queries. To resolve this, I have added to the prompt guidance that "how-to" questions (e.g., instructional or operational queries) are more likely to be platform questions that should be answered via the internal FAQs, rather than being escalated as system bugs.
